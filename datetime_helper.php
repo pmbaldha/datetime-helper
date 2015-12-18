@@ -82,3 +82,39 @@ if (! function_exists('relative_time')) {
         return "{$difference} {$periods[$j]} {$ending}";
     }
 }
+
+if (! function_exists('date_format')) {
+    /**
+     * Convert unix time to a human readable time in the user's timezone or in a
+     * given timezone.
+     *
+     * For supported timezones visit - http://php.net/manual/timezones.php
+     * For accepted formats visit - http://php.net/manual/function.date.php
+     *
+     * @example echo date_format();
+     * @example echo user_time($timestamp, 'EET', 'l jS \of F Y h:i:s A');
+     *
+     * @param int    $timestamp A UNIX timestamp. If none is given, current time
+     * will be used.
+     * @param string $timezone  The destination timezone for the conversion. If
+     * none is given, the current user's configured timezone will be used.
+     * @param string $format    The format string to apply to the converted
+     * timestamp.
+     *
+     * @return string A string containing the timestamp in the requested format.
+     */
+    function date_format($timestamp = null, $timezone = null, $format = 'r')
+    {
+        if (empty($timestamp)) {
+            $dtime = new DateTime(null, new DateTimeZone($timezone));
+            return $dtime->format($format);
+        }
+        $dtime = new DateTime();
+        if (is_int($timestamp)) {
+            $dtime->setTimestamp($timestamp);
+        } elseif ($timestamp != 'now') {
+            $dtime->modify($timestamp);
+        }
+        return $dtime->setTimezone(new DateTimeZone($timezone))->format($format);
+    }
+}
