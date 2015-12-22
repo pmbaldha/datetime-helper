@@ -118,3 +118,27 @@ if (! function_exists('date_format')) {
         return $dtime->setTimezone(new DateTimeZone($timezone))->format($format);
     }
 }
+if (! function_exists('time_stamp_from_str')) 
+ {
+    /**
+    * Returns a UNIX timestamp, given either a UNIX timestamp or a valid strtotime() date string.
+    * @param string $date_str Datetime string
+    * @return string Parsed timestamp
+    */
+   function time_stamp_from_str($date_str) 
+   {
+       if (empty($date_str)) {
+	       return false;
+       }
+       if (is_integer($date_str) || is_numeric($date_str)) {
+	       $date = intval($date_str);
+       } else {
+	       $date = strtotime($date_str);
+       }
+
+       if ($date === -1) {
+	       return false;
+       }
+       return $date;
+   }
+}
