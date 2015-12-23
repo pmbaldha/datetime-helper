@@ -142,3 +142,17 @@ if (! function_exists('time_stamp_from_str'))
        return $date;
    }
 }
+if (! function_exists('utc_timestamp')) 
+{
+    /**
+    * utc_timestamp
+    *
+    * Returns current UTC/GMT timestamp
+    *
+    * @return current UNIIX utc/gmt timestamp
+    **/
+    function utc_timestamp() 
+    {
+	return strtotime(gmdate("Y-m-d H:i:s"));
+    }
+}
