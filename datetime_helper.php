@@ -142,7 +142,7 @@ if (! function_exists('time_stamp_from_str'))
        return $date;
    }
 }
-if (! function_exists('utc_timestamp')) 
+if (! function_exists('utc_time')) 
 {
     /**
     * utc_timestamp
@@ -151,7 +151,7 @@ if (! function_exists('utc_timestamp'))
     *
     * @return current UNIIX utc/gmt timestamp
     **/
-    function utc_timestamp() 
+    function utc_time() 
     {
 	return strtotime(gmdate("Y-m-d H:i:s"));
     }
