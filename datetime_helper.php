@@ -156,3 +156,17 @@ if (! function_exists('utc_time'))
 	return strtotime(gmdate("Y-m-d H:i:s"));
     }
 }
+if (! function_exists('gmt_time')) 
+{
+    /**
+    * utc_timestamp
+    *
+    * Returns current UTC/GMT timestamp
+    *
+    * @return current UNIIX utc/gmt timestamp
+    **/
+    function gmt_time() 
+    {
+	return strtotime(gmdate("Y-m-d H:i:s"));
+    }
+}
